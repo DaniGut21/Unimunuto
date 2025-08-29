@@ -5,8 +5,8 @@
 🚀 Objetivo: combinar teoría universitaria con proyectos reales para aprender y aportar.
 
 ## 📌 Proyectos Destacados
-- **[Nombre](Link)** – descripcion.
-- **[Nombre](Link)** – descripcion.
+- **[Proyecto_clase_emprendimiento](Link)** – descripcion.
+- **[Proyecto_personal](Link)** – descripcion.
 
 ## 🛠 Tecnologías que uso
 - **Lenguajes:** Python, Java.
