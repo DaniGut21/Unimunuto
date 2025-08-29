@@ -6,7 +6,7 @@
 
 ## 📌 Proyectos Destacados
 - **[Proyecto_clase_emprendimiento](Link)** – descripcion.
-- **[Proyecto_personal](Link)** – descripcion.
+- **[Proyecto_personal](https://github.com/DaniGut21/Unimunuto/tree/97c748c18c29f15ad7eab4c06c63c1cc4b4355a9/Proyecto_personal)** – En este repositorio estara mi proyecto personal, donde subire diferentes archivos que me inspiren en mi vida.
 
 ## 🛠 Tecnologías que uso
 - **Lenguajes:** Python, Java.
