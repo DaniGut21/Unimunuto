@@ -6,6 +6,7 @@
 
 ## 📌 Proyectos Destacados
 - **[Nombre](Link)** – descripcion.
+- **[Nombre](Link)** – descripcion.
 
 ## 🛠 Tecnologías que uso
 - **Lenguajes:** Python, Java.
