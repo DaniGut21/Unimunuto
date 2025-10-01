@@ -30,7 +30,7 @@ def buscar(cab):
     print("Lista vacia, no hay datos para buscar")
   else:
     pos=int(input("Ingresa la posicion a buscar: "))
-    i=1
+    i=0
     aux=cab
     while (aux!=None) and (i<pos):
       aux=aux.sig
