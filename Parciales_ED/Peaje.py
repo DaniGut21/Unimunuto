@@ -69,7 +69,7 @@ class Cola:
     tipos = ["automovil", "camioneta"]                        #agrega n vehículos aleatoriamente
     for _ in range(n):
       tipo = random.choice(tipos)
-      self.sumar(tipo)
+      self.agregar(tipo)
     print(f"{n} vehículos agregados aleatoriamente.\n")
 
   def mostrar_estadisticas(self):
