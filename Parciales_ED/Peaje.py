@@ -54,7 +54,7 @@ class Cola:
       if r == self.cab:
         self.cab = q
 
-    if tipo == "automóvil":
+    if tipo == "automovil":
       self.total_autos += 1
       self.recaudo_autos += 50
     elif tipo == "camioneta":              #procesar cobro
@@ -66,7 +66,7 @@ class Cola:
 
   def agregar_aleatorio(self, n):
     """Agrega n vehículos de forma aleatoria"""
-    tipos = ["automóvil", "camioneta"]                        #agrega n vehículos aleatoriamente
+    tipos = ["automovil", "camioneta"]                        #agrega n vehículos aleatoriamente
     for _ in range(n):
       tipo = random.choice(tipos)
       self.sumar(tipo)
@@ -78,7 +78,7 @@ class Cola:
     total_recaudo = self.recaudo_autos + self.recaudo_camionetas
 
     print("\n--- ESTADÍSTICAS ---")                                                              #muestra estadísticas de la cola
-    print(f"Automóviles: {self.total_autos} | Recaudo: ${self.recaudo_autos}")
+    print(f"Automoviles: {self.total_autos} | Recaudo: ${self.recaudo_autos}")
     print(f"Camionetas: {self.total_camionetas} | Recaudo: ${self.recaudo_camionetas}")
     print(f"TOTAL vehículos: {total_vehiculos} | Recaudo total: ${total_recaudo}")
     print("----------------------\n")
@@ -105,7 +105,7 @@ def menu():                                                                     
 
     if opcion == 1:
       tipo = input("Ingrese tipo (automóvil/camioneta): ").strip().lower()
-      if tipo in ["automóvil", "camioneta"]:
+      if tipo in ["automovil", "camioneta"]:
         cola.agregar(tipo)
         print(f"Vehículo '{tipo}' agregado.\n")
       else:
