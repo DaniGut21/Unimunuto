@@ -24,7 +24,7 @@ class Cola:
     while r != q:
       print(r.info, end=" ")
       r = r.sig
-    print("")
+    print("\n")
 
   def obtener_lista(self):
     elementos = []
@@ -47,13 +47,13 @@ class Cola:
       print("El salto debe ser mayor que 0.")
       return
 
-    print("Simulando Josephus con {len(elementos)} personas y salto de {salto}...")
+    print(f"\nSimulando Josephus con {len(elementos)} personas y salto de {salto}...")
     idx = 0
     while len(elementos) > 1:
       idx = (idx + salto - 1) % len(elementos)
       eliminado = elementos.pop(idx)
-      print("Eliminado: {eliminado} -> Quedan: {elementos}")
-    print("Sobreviviente: {elementos[0]}")
+      print(f"Eliminado: {eliminado} -> Quedan: {elementos}")
+    print(f"\nSobreviviente: {elementos[0]}\n")
 
 def menu():
   cola = Cola()
@@ -69,16 +69,16 @@ def menu():
     try:
       opcion = int(input("Seleccione una opción: "))
     except ValueError:
-      print("Debe ingresar un número")
+      print("Debe ingresar un número\n")
       continue
 
     if opcion == 1:
       try:
         dato = int(input("Ingrese número a insertar: "))
         cola.sumar(dato)
-        print("Dato insertado")
+        print("Dato insertado\n")
       except ValueError:
-        print("Entrada inválida")
+        print("Entrada inválida\n")
 
     elif opcion == 2:
       print("Contenido de la cola:", end=" ")
@@ -89,13 +89,13 @@ def menu():
         salto = int(input("Ingrese el salto (por ejemplo 3): "))
         cola.josephus(salto)
       except ValueError:
-        print("Entrada inválida")
+        print("Entrada inválida\n")
 
     elif opcion == 4:
       print("Saliendo...")
       break
     else:
-      print("Opción inválida")
+      print("Opción inválida\n")
 
 if __name__ == "__main__":
   menu()
