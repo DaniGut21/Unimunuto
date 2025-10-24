@@ -104,7 +104,7 @@ def menu():                                                                     
       continue
 
     if opcion == 1:
-      tipo = input("Ingrese tipo (automóvil/camioneta): ").strip().lower()
+      tipo = input("Ingrese tipo (automovil/camioneta): ").strip().lower()
       if tipo in ["automovil", "camioneta"]:
         cola.agregar(tipo)
         print(f"Vehículo '{tipo}' agregado.\n")
