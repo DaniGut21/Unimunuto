@@ -1,22 +1,23 @@
-import random
+#Peaje
+import random        #importar la librería random de numeros aleatorios
 
 class Nodo:
   def __init__(self, dato):
-    self.info = dato
+    self.info = dato             #inicializa el nodo con (info y sig)
     self.sig = None
 
 class Cola:
   def __init__(self):
     self.cab = Nodo(-1)  # nodo centinela
-    self.cab.sig = self.cab
+    self.cab.sig = self.cab                           #asigna la cabeza de la cola al nodo
     # Contadores de control
     self.total_autos = 0
     self.total_camionetas = 0
     self.recaudo_autos = 0
     self.recaudo_camionetas = 0
 
-  def sumar(self, tipo):
-    """Agrega un vehículo a la cola"""
+  def agregar(self, tipo):
+    """Agrega un vehículo a la cola"""                #agrega un vehículo a la cola
     nuevo = Nodo(tipo)
     nuevo.sig = self.cab.sig
     self.cab.sig = nuevo
@@ -26,7 +27,7 @@ class Cola:
     """Muestra la cola actual"""
     if self.cab == self.cab.sig:
       print("(no hay vehículos en la cola)\n")
-      return
+      return                                       #muestra los datos que se encuentran en la cola
     q = self.cab.sig
     r = q.sig
     print("Vehículos en la cola:")
@@ -37,15 +38,14 @@ class Cola:
 
   def retirar(self):
     """Atiende el siguiente vehículo en la cola"""
-    if self.cab == self.cab.sig:
+    if self.cab == self.cab.sig:                               #atiende el siguiente vehículo en la cola
       print("No hay vehículos para atender.\n")
       return
 
     q = self.cab.sig  # centinela
-    r = q.sig         # primer vehículo real
+    r = q.sig         # primer vehículo real             #elimina el primer vehículo
     tipo = r.info
 
-    # Eliminar el nodo
     if r == self.cab:
       q.sig = q
       self.cab = q
@@ -107,7 +107,7 @@ def menu():
     if opcion == 1:
       tipo = input("Ingrese tipo (automóvil/camioneta): ").strip().lower()
       if tipo in ["automóvil", "camioneta"]:
-        cola.sumar(tipo)
+        cola.agregar(tipo)
         print(f"Vehículo '{tipo}' agregado.\n")
       else:
         print("Tipo inválido.\n")
