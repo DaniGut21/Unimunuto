@@ -86,7 +86,7 @@ def menu():
 
     elif opcion == 3:
       try:
-        salto = int(input("Ingrese el salto (por ejemplo 3): "))
+        salto = int(input("Ingrese el salto: "))
         cola.josephus(salto)
       except ValueError:
         print("Entrada inválida\n")
