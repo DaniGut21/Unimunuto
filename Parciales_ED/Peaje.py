@@ -43,22 +43,21 @@ class Cola:
       return
 
     q = self.cab.sig  # centinela
-    r = q.sig         # primer vehículo real             #elimina el primer vehículo
+    r = q.sig         # primer vehículo real             #elimina el primer vehículo (si es el mismo que el centinela, se vuelve a poner en la cabeza)
     tipo = r.info
 
     if r == self.cab:
       q.sig = q
       self.cab = q
-    else:
+    else:                      #elimina el primer vehículo
       q.sig = r.sig
       if r == self.cab:
         self.cab = q
 
-    # Procesar cobro
     if tipo == "automóvil":
       self.total_autos += 1
       self.recaudo_autos += 50
-    elif tipo == "camioneta":
+    elif tipo == "camioneta":              #procesar cobro
       self.total_camionetas += 1
       self.recaudo_camionetas += 70
 
@@ -67,7 +66,7 @@ class Cola:
 
   def agregar_aleatorio(self, n):
     """Agrega n vehículos de forma aleatoria"""
-    tipos = ["automóvil", "camioneta"]
+    tipos = ["automóvil", "camioneta"]                        #agrega n vehículos aleatoriamente
     for _ in range(n):
       tipo = random.choice(tipos)
       self.sumar(tipo)
@@ -78,13 +77,13 @@ class Cola:
     total_vehiculos = self.total_autos + self.total_camionetas
     total_recaudo = self.recaudo_autos + self.recaudo_camionetas
 
-    print("\n--- ESTADÍSTICAS ---")
+    print("\n--- ESTADÍSTICAS ---")                                                              #muestra estadísticas de la cola
     print(f"Automóviles: {self.total_autos} | Recaudo: ${self.recaudo_autos}")
     print(f"Camionetas: {self.total_camionetas} | Recaudo: ${self.recaudo_camionetas}")
     print(f"TOTAL vehículos: {total_vehiculos} | Recaudo total: ${total_recaudo}")
     print("----------------------\n")
 
-def menu():
+def menu():                                                                                                #menu principal
   cola = Cola()
   opcion = 0
 
@@ -93,7 +92,7 @@ def menu():
     print("1. Agregar vehículo manualmente")
     print("2. Agregar vehículos aleatorios")
     print("3. Listar cola")
-    print("4. Atender vehículo")
+    print("4. Atender vehículo")                                                                    #menu de operaciones
     print("5. Mostrar estadísticas")
     print("6. Salir")
     print("===================")
@@ -115,7 +114,7 @@ def menu():
     elif opcion == 2:
       try:
         n = int(input("¿Cuántos vehículos desea agregar?: "))
-        cola.agregar_aleatorio(n)
+        cola.agregar_aleatorio(n)                                                                    #parte logica y de desicion
       except ValueError:
         print("Entrada inválida.\n")
 
@@ -134,5 +133,6 @@ def menu():
     else:
       print("Opción inválida.\n")
 
-if __name__ == "__main__":
+if __name__ == "__main__":               #repite el menu hasta que se seleccione salir
   menu()
+ 
