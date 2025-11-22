@@ -97,4 +97,4 @@ while True:
         print(f"{Y}¡Apagando MiSO... Gracias por usar nuestro sistema!{R}")
         break
     else:
-        print("Comandos: hola, equipo, matrix, snake, clear, salir")
+        print("Comandos: hola, equipo, reloj, matrix, snake, clear, salir")
