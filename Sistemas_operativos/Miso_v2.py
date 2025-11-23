@@ -1,27 +1,28 @@
-# MiSO v2.1 - Sistema Operativo Mejorado con comando YouTube funcional
+# MiSO v2.2 - Compatible 100% con Windows (PowerShell, CMD) y Linux
 # -------------------------------------------------------------
-# Mejoras incluidas:
-# - Comando youtube 100% funcional
-# - Import corregido
-# - Eliminado diccionario duplicado
-# - Código organizado y limpio
-# - Sistema estable y listo para ampliar
+# Esta versión usa COLORAMA para evitar errores ANSI en Windows.
+# Ya no verás códigos rotos como "[93m" en PowerShell.
+# Funciona perfecto en todos los terminales.
 
 import time
 import random
 import os
-import webbrowser   # IMPORT NECESARIO PARA ABRIR YOUTUBE
+import webbrowser
+from colorama import init, Fore, Style
+
+# Inicializar colorama (necesario para Windows)
+init(autoreset=True)
 
 # ==========================
-# COLORES
+# COLORES SEGUROS
 # ==========================
 class Color:
-    GREEN = "[92m"
-    YELLOW = "[93m"
-    CYAN = "[96m"
-    RESET = "[0m"
-    RED = "[91m"
-    MAG = "[95m"
+    GREEN = Fore.GREEN
+    YELLOW = Fore.YELLOW
+    CYAN = Fore.CYAN
+    RED = Fore.RED
+    MAG = Fore.MAGENTA
+    RESET = Style.RESET_ALL
 
 c = Color
 
@@ -29,10 +30,10 @@ c = Color
 # ENCABEZADO
 # ==========================
 def header():
-    print(f"{c.YELLOW}═" * 60)
-    print(f"{c.GREEN} ★★★ MiSO v2.1 - SISTEMA OPERATIVO EN PYTHON ★★★")
-    print(f" Equipo: Daniel G · Angelita S · Daniel R · Santiago C · 2025")
-    print(f"═" * 60 + f"{c.RESET}")
+    print(c.YELLOW + "═" * 60)
+    print(c.GREEN + " ★★★ MiSO v2.2 - SISTEMA OPERATIVO EN PYTHON ★★★")
+    print(" Equipo: Daniel G · Angelita S · Daniel R · Santiago C · 2025")
+    print("═" * 60 + c.RESET)
 
 header()
 
@@ -40,7 +41,7 @@ header()
 # EFECTO MATRIX
 # ==========================
 def matrix():
-    print(f"{c.GREEN}Iniciando efecto Matrix... (15 segundos){c.RESET}")
+    print(c.GREEN + "Iniciando efecto Matrix... (15 segundos)" + c.RESET)
     columnas = 80
     gotas = [0] * columnas
     inicio = time.time()
@@ -58,13 +59,13 @@ def matrix():
         print(c.GREEN + linea + c.RESET)
         time.sleep(0.05)
 
-    print(f"{c.YELLOW}\nEfecto finalizado.{c.RESET}")
+    print(c.YELLOW + "\nEfecto finalizado." + c.RESET)
 
 # ==========================
-# SNAKE
+# JUEGO SNAKE
 # ==========================
 def snake():
-    print(f"{c.YELLOW}JUEGO: Snake (W A S D para mover, 'salir' para terminar){c.RESET}")
+    print(c.YELLOW + "JUEGO: Snake (W A S D para mover, 'salir' para terminar)" + c.RESET)
 
     ancho, alto = 25, 12
     snake = [(ancho // 2, alto // 2)]
@@ -92,7 +93,7 @@ def snake():
         mov = input().lower().strip()
 
         if mov == "salir":
-            print(f"{c.YELLOW}Juego terminado. Puntos: {puntos}{c.RESET}")
+            print(c.YELLOW + f"Juego terminado. Puntos: {puntos}" + c.RESET)
             return
         elif mov == "w": dx, dy = 0, -1
         elif mov == "s": dx, dy = 0, 1
@@ -103,7 +104,7 @@ def snake():
         nueva = ((cabeza[0] + dx) % ancho, (cabeza[1] + dy) % alto)
 
         if nueva in snake:
-            print(f"{c.RED}Game Over. Puntos finales: {puntos}{c.RESET}")
+            print(c.RED + f"Game Over. Puntos finales: {puntos}" + c.RESET)
             return
 
         snake.insert(0, nueva)
@@ -118,58 +119,57 @@ def snake():
 # INFORMACIÓN DEL SISTEMA
 # ==========================
 def info():
-    print(f"{c.CYAN}MiSO v2.1 — Información del sistema:{c.RESET}")
-    print(f"- Interprete de comandos mejorado")
-    print(f"- Procesos incluidos: Matrix, Snake")
-    print(f"- Comando YouTube incorporado")
-    print(f"- Proyecto educativo para comprender arquitectura de SO")
+    print(c.CYAN + "MiSO v2.2 — Información del sistema:" + c.RESET)
+    print("- Compatible con CMD, PowerShell, Linux y Mac")
+    print("- Incluye: Matrix, Snake, YouTube, reloj, clear y más")
+    print("- Proyecto educativo para entender sistemas operativos")
 
 # ==========================
 # AYUDA
 # ==========================
 def help_menu():
-    print(f"{c.MAG}Comandos disponibles:{c.RESET}")
+    print(c.MAG + "Comandos disponibles:" + c.RESET)
     for cmd in comandos.keys():
         print(f" - {cmd}")
 
 # ==========================
-# COMANDO YOUTUBE (CORREGIDO)
+# COMANDO YOUTUBE (CORRECTO)
 # ==========================
 def youtube():
     query = input("Ingresa el nombre del video a buscar: ").strip().replace(" ", "+")
     url = f"https://www.youtube.com/results?search_query={query}"
     webbrowser.open(url)
-    print(f"{c.YELLOW}Abriendo YouTube...{c.RESET}")
+    print(c.YELLOW + "Abriendo YouTube..." + c.RESET)
 
 # ==========================
-# MAPA ÚNICO DE COMANDOS
+# MAPA DE COMANDOS
 # ==========================
 comandos = {
     "matrix": matrix,
     "snake": snake,
     "serpiente": snake,
     "youtube": youtube,
-    "hola": lambda: print("¡Hola desde MiSO v2.1!"),
+    "hola": lambda: print("¡Hola desde MiSO v2.2!"),
     "equipo": lambda: print("Daniel G, Angelita S, Daniel R, Santiago C"),
     "reloj": lambda: print("Hora actual:", time.strftime("%H:%M:%S")),
     "info": info,
     "help": help_menu,
     "ayuda": help_menu,
     "clear": lambda: os.system("cls" if os.name == "nt" else "clear"),
-    "salir": lambda: exit(print(f"{c.YELLOW}Apagando MiSO v2.1...{c.RESET}")),
+    "salir": lambda: exit(print(c.YELLOW + "Apagando MiSO v2.2..." + c.RESET)),
 }
 
 # ==========================
 # BUCLE PRINCIPAL DEL SISTEMA
 # ==========================
 while True:
-    cmd = input(f"{c.YELLOW}MiSO>{c.RESET} ").strip().lower()
+    cmd = input(c.YELLOW + "MiSO> " + c.RESET).strip().lower()
 
     if cmd in comandos:
         try:
             comandos[cmd]()
         except Exception as e:
-            print(f"{c.RED}[ERROR] {e}{c.RESET}")
+            print(c.RED + f"[ERROR] {e}" + c.RESET)
     else:
-        print(f"{c.RED}Comando no reconocido.{c.RESET}")
+        print(c.RED + "Comando no reconocido." + c.RESET)
         print("Escribe 'help' para ver los comandos disponibles.")
