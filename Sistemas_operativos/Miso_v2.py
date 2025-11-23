@@ -1,27 +1,27 @@
-# MiSO v2.0 - Sistema Operativo Mejorado
+# MiSO v2.1 - Sistema Operativo Mejorado con comando YouTube funcional
+# -------------------------------------------------------------
 # Mejoras incluidas:
-# - Sistema de ayuda mejorado
-# - Colores centralizados
-# - Manejo de errores más sólido
-# - Comandos organizados en un diccionario
-# - Juego Snake optimizado con límites configurables
-# - Función "info" para mostrar información del sistema
-# - Mensajes más limpios y consistentes
+# - Comando youtube 100% funcional
+# - Import corregido
+# - Eliminado diccionario duplicado
+# - Código organizado y limpio
+# - Sistema estable y listo para ampliar
 
 import time
 import random
 import os
+import webbrowser   # IMPORT NECESARIO PARA ABRIR YOUTUBE
 
 # ==========================
 # COLORES
 # ==========================
 class Color:
-    GREEN = "\033[92m"
-    YELLOW = "\033[93m"
-    CYAN = "\033[96m"
-    RESET = "\033[0m"
-    RED = "\033[91m"
-    MAG = "\033[95m"
+    GREEN = "[92m"
+    YELLOW = "[93m"
+    CYAN = "[96m"
+    RESET = "[0m"
+    RED = "[91m"
+    MAG = "[95m"
 
 c = Color
 
@@ -30,7 +30,7 @@ c = Color
 # ==========================
 def header():
     print(f"{c.YELLOW}═" * 60)
-    print(f"{c.GREEN} ★★★ MiSO v2.0 - SISTEMA OPERATIVO EN PYTHON ★★★")
+    print(f"{c.GREEN} ★★★ MiSO v2.1 - SISTEMA OPERATIVO EN PYTHON ★★★")
     print(f" Equipo: Daniel G · Angelita S · Daniel R · Santiago C · 2025")
     print(f"═" * 60 + f"{c.RESET}")
 
@@ -40,7 +40,7 @@ header()
 # EFECTO MATRIX
 # ==========================
 def matrix():
-    print(f"{c.GREEN}Iniciando efecto Matrix mejorado... (15 segundos){c.RESET}")
+    print(f"{c.GREEN}Iniciando efecto Matrix... (15 segundos){c.RESET}")
     columnas = 80
     gotas = [0] * columnas
     inicio = time.time()
@@ -79,9 +79,9 @@ def snake():
             linea = ""
             for x in range(ancho):
                 if (x, y) == snake[0]:
-                    linea += "█"  # cabeza
+                    linea += "█"
                 elif (x, y) in snake:
-                    linea += "▓"  # cuerpo
+                    linea += "▓"
                 elif (x, y) == comida:
                     linea += "♥"
                 else:
@@ -118,11 +118,11 @@ def snake():
 # INFORMACIÓN DEL SISTEMA
 # ==========================
 def info():
-    print(f"{c.CYAN}MiSO v2.0 — Información del sistema:{c.RESET}")
-    print(f"- Intérprete de comandos mejorado")
-    print(f"- Procesos: Matrix, Snake")
-    print(f"- Comandos del sistema disponibles")
-    print(f"- Creado como proyecto educativo en Python")
+    print(f"{c.CYAN}MiSO v2.1 — Información del sistema:{c.RESET}")
+    print(f"- Interprete de comandos mejorado")
+    print(f"- Procesos incluidos: Matrix, Snake")
+    print(f"- Comando YouTube incorporado")
+    print(f"- Proyecto educativo para comprender arquitectura de SO")
 
 # ==========================
 # AYUDA
@@ -133,7 +133,7 @@ def help_menu():
         print(f" - {cmd}")
 
 # ==========================
-# MAPA DE COMANDOS
+# COMANDO YOUTUBE (CORREGIDO)
 # ==========================
 def youtube():
     query = input("Ingresa el nombre del video a buscar: ").strip().replace(" ", "+")
@@ -141,34 +141,22 @@ def youtube():
     webbrowser.open(url)
     print(f"{c.YELLOW}Abriendo YouTube...{c.RESET}")
 
-comandos = {
-    "matrix": matrix,
-    "snake": snake,
-    "serpiente": snake,
-    "youtube": youtube,
-    "hola": lambda: print("¡Hola desde MiSO v2!"),
-    "equipo": lambda: print("Daniel G, Angelita S, Daniel R, Santiago C"),
-    "reloj": lambda: print("Hora actual:", time.strftime("%H:%M:%S")),
-    "info": info,
-    "help": help_menu,
-    "ayuda": help_menu,
-    "clear": lambda: os.system("cls" if os.name == "nt" else "clear"),
-    "salir": lambda: exit(print(f"{c.YELLOW}Apagando MiSO v2...{c.RESET}")),
-}
-
+# ==========================
+# MAPA ÚNICO DE COMANDOS
 # ==========================
 comandos = {
     "matrix": matrix,
     "snake": snake,
     "serpiente": snake,
-    "hola": lambda: print("¡Hola desde MiSO v2!"),
+    "youtube": youtube,
+    "hola": lambda: print("¡Hola desde MiSO v2.1!"),
     "equipo": lambda: print("Daniel G, Angelita S, Daniel R, Santiago C"),
     "reloj": lambda: print("Hora actual:", time.strftime("%H:%M:%S")),
     "info": info,
     "help": help_menu,
     "ayuda": help_menu,
     "clear": lambda: os.system("cls" if os.name == "nt" else "clear"),
-    "salir": lambda: exit(print(f"{c.YELLOW}Apagando MiSO v2...{c.RESET}")),
+    "salir": lambda: exit(print(f"{c.YELLOW}Apagando MiSO v2.1...{c.RESET}")),
 }
 
 # ==========================
